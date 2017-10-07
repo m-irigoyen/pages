@@ -1,0 +1,12 @@
+// p is inside the rect abcd if ((0 < ap.ab < ab.ab) && (0 < ap.ad < ad.ad))
+"float isPointInRectangle(const vec2 p, const vec2 a, const vec2 b, const vec2 d)\n"
+"{\n"
+"	vec2 AB = b - a;\n"
+"	vec2 AD = d - a;\n"
+"	vec2 AP = p - a;\n"
+"	float dotBP = dot(AB, AP);\n"
+"	float dotBB = dot(AB, AB);\n"
+"	float dotDP = dot(AD, AP);\n"
+"	float dotDD = dot(AD, AD);\n"
+"	return float((0 <= dotBP) && (dotBP <= dotBB) && (0 <= dotDP) && (dotDP <= dotDD));\n"
+"}\n"
