@@ -5,6 +5,7 @@ namespace pages
 	StateManager::StateManager()
 		: sfmltemplate::StateManager()
 		, play(false)
+		, test(false)
 	{
 
 	}

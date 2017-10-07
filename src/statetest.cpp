@@ -65,13 +65,18 @@ namespace pages
 		return result;
 	}
 
-	void makePages(const scenelib::Scene& scene
+	void makeNextPages(const scenelib::Scene& scene
 		, GameBook& book
 		, sf::Texture& paper
 		, sf::Font& textFont
 		, std::vector<sf::Sprite>& pages
 		, std::vector<sf::Texture>& textures)
 	{
+		textures.push_back(sf::Texture());
+		textures.push_back(sf::Texture());
+		pages.push_back(sf::Sprite());
+		pages.push_back(sf::Sprite());
+
 		mutils::Vec2 pageSize = book.getPageSize();
 		mutils::Vec2 pageMargin = mutils::Vec2(10, 10);
 
@@ -100,23 +105,27 @@ namespace pages
 		result.draw(t);
 		result.display();
 
-		{
-			sf::Image i = result.getTexture().copyToImage();
-			i.saveToFile("c:/test/page1buildbefore.png");
-			textures.push_back(sf::Texture());
-			textures.back().loadFromImage(i);
-			sf::Sprite s;
-			s.setTexture(textures.back());
-			pages.push_back(s);
-			textures.back().copyToImage().saveToFile("c:/test/page1build.png");
-		}
-		{
-			textures.push_back(sf::Texture());
-			textures.back().loadFromImage(tmp);
-			sf::Sprite s;
-			s.setTexture(textures.back());
-			pages.push_back(s);
-		}
+		sf::Image i = result.getTexture().copyToImage();
+		textures[2].loadFromImage(i);
+		pages[2].setTexture(textures.back());
+		pages[2].setTextureRect(sf::IntRect(0, 0, pageSize.x, pageSize.y));
+		textures[3].loadFromImage(tmp);
+		pages[3].setTexture(textures.back());
+		pages[3].setTextureRect(sf::IntRect(0, 0, pageSize.x, pageSize.y));
+	}
+
+	void resetPages(std::vector<sf::Sprite>& pages, std::vector<sf::Texture>& textures)
+	{
+		textures[0] = textures[2];
+		textures[1] = textures[3];
+		textures[2] = sf::Texture();
+		textures[3] = sf::Texture();
+		pages[0] = pages[2];
+		pages[1] = pages[3];
+		pages[2] = sf::Sprite();
+		pages[3] = sf::Sprite();
+		pages[0].setTexture(textures[0]);
+		pages[1].setTexture(textures[1]);
 	}
 
 	bool StateTest::init()
@@ -129,12 +138,13 @@ namespace pages
 		scenes_.loadTestProject();
 
 		// Make first pages
-		makePages(scenes_.getCurrentScene(),
+		makeNextPages(scenes_.getCurrentScene(),
 			*bookNode_->getBook(),
 			resourceManager_.getTexture(ResourceManager::Textures::paper),
 			resourceManager_.getFont(ResourceManager::Fonts::monofonto),
 			bookNode_->getBook()->getPages(),
 			bookNode_->getBook()->getTextures());
+		resetPages(bookNode_->getBook()->getPages(), bookNode_->getBook()->getTextures());
 
 		return true;
 	}
@@ -156,3 +166,4 @@ namespace pages
 		// TODO that
 	}
 }
+

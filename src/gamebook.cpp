@@ -13,7 +13,7 @@ namespace pages
 	using Vec2 = mutils::Vec2;
 
 	GameBook::GameBook()
-		: AbstractBook(Vec2(360.f, 520.f), Vec2(30.f, 30.f), 100.f, Vec2(80.f, 420.f))
+		: AbstractBook(Vec2(630.f, 700.f), Vec2(10.f, 10.f), 100.f, Vec2(80.f, 420.f))
 	{
 
 	}
@@ -42,6 +42,9 @@ namespace pages
 		}
 		shadowSprite_.setTexture(shadowTex_);
 
+		pages_.resize(4);
+		pagesTex_.resize(4);
+
 		return true;
 	}
 
@@ -59,8 +62,6 @@ namespace pages
 		s.setOrigin(sfmlutils::vec2ToSf(pageOrigin));
 		s.setPosition(sfmlutils::vec2ToSf(position));
 		s.setRotation(rotation);
-		s.getTexture()->copyToImage().saveToFile("c:/test/page1.png");
-
 
 		sf::Sprite shadow = shadowSprite_;
 		shadow.setOrigin(sfmlutils::vec2ToSf(pageOrigin));

@@ -32,8 +32,6 @@ add_subdirectory(shared/scenelib)
 add_subdirectory(shared/sfmlutils)
 add_subdirectory(shared/sfmltemplate)
 
-
-
 FILE(GLOB_RECURSE SRC ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
 FILE(GLOB_RECURSE HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/src/*.hpp)
 

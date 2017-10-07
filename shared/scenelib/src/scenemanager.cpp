@@ -1,5 +1,5 @@
 #include <scenelib/scenemanager.hpp>
-#include "yamlparser.hpp"
+#include "txtparser.hpp"
 
 #include <mutils/assert.hpp>
 #include <mutils/stringutils.hpp>
@@ -143,8 +143,8 @@ namespace scenelib
 		scenes_.clear();
 		currentScene_ = scenes_.end();
 
-		YAMLParser parser;
-		if (!parser.loadYAMLFromFile(*this, file))
+		TxtParser parser;
+		if (!parser.loadFromFile(*this, file))
 		{
 			MUTILS_ASSERT(false);
 			return false;

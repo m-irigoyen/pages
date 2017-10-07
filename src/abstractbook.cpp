@@ -833,6 +833,7 @@ namespace pages
 			}
 		}
 	}
+
 	void AbstractBook::draw(sf::RenderTarget & target, sf::RenderStates states) const
 	{
 		// First, draw current pages.

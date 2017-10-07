@@ -1,0 +1,25 @@
+----
+@begin
+
+You suddenly arrive in the middle of a scene description. A very nice one. Like wow, I mean, if you could see it... It would totally blow your mind.
+For sure.
+
+...
+
+ANYWAY ! You might want to try the choice thing. Yeah.
+
+* Oh wow, this sucks. I'm out of here.
+	> end
+* Meh, I don't know. I Kind of like it here.
+	> seriously
+
+
+----
+@seriously
+
+Seriously ? Man, there's nothing here ! Like nothing at all.
+
+* Yeah, I can see that. Can I go back to that scene description ?
+	> begin
+* This definitely sucks. I'm out.
+	> end
