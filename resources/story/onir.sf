@@ -1,0 +1,94 @@
+----
+@intro
+
+As you open your eyes you discover a weired land, full of incoherences, with plenty of colors and light, but also a lot of darkness and gray tone. An old blind man comes to you.
+– Hello stranger my name is Yre, welcome to the world of Onir : the world of your dreams. You are here for purpose, I can feel it. You’re here to gain control of your dreams. You can do so if you get the rune of Onir.
+Yre raise his hand and a giant castle, made of gold and jewels, grow from the ground.
+– This is the Dream palace. There is two rooms inside where you can find the runes. Those rooms are ruled by my two childs : my daughter Ama and my son Ther. They’ll come to you and, perhaps, they’ll help you, but first you have to get something to move in there.
+The old man take you in front of the great door and shows you a playing card deck.
+– Cards are your safe way into this place. You have to leave your screen, keyboard and computer to find a 52 playing card game and then come back. You’ll need it to go through your adventure… When you have it, shuffle it. Then never change the order again and follow the castle instruction. Ready? Let’s do your first step.
+
+* draw a card
+    > 001 //TODO: card draw
+
+----
+@001
+
+* [lucky]
+    > 001_l
+* [neutral]
+    > 001_n
+* [unlucky]
+    > 001_u
+
+----
+@001_l
+
+The door open on a cloud field. Soft as wool an light as feather, every step on this land trigger a warm pulse from foot to your deep heart.
+As Yre told you, his son Ther comes to you. Blind, like his father, he stays a pretty nice and big kitten made of surprising matters. His rainbow body is driven by crystal legs and crowned by windy hairs. As he put his nose on your knee, you hear his sparkling voice directly in your head.
+– What’s that ? You’re in my realm, unpleasant unperfect unlucky thing. What do you want? Oh, wait… I don’t care! Just go out of this room and leave honest and lucky dreams alone.
+– Wait Ther! I want to find the rune of Onir!
+– Oh, really? And you expect me to help you? Try by yourself, you have cards, just use it!
+
+* Let's give a try with cards
+    > tr_001_l //TODO: 2 card draw
+
+----
+@001_n
+
+The door open on a cloud field. Soft as wool an light as feather, every step on this land trigger a warm pulse from foot to your deep heart.
+As Yre told you, his son Ther comes to you. Blind, like his father, he stays a pretty nice and big kitten made of surprising matters. His rainbow body is driven by crystal legs and crowned by windy hairs. As he put his nose on your knee, you hear his sparkling voice directly in your head.
+– Oh someone new on my land! What would a strange weird and curious person like you be looking for?
+– Ther, your father told me that you could help me find the rune of onir.
+– Well, why not ? The rune is kept in the cloud tree. You’ll need the key of light to open it and access the rune. Go in the other room to find my sister and get it.
+
+* Let's go to the other room
+    > 002 //TODO: card draw
+----
+@001_u
+The door open on a cloud field. Soft as wool an light as feather, every step on this land trigger a warm pulse from foot to your deep heart.
+As Yre told you, his son Ther comes to you. Blind, like his father, he stays a pretty nice and big kitten made of surprising matters. His rainbow body is driven by crystal legs and crowned by windy hairs. As he put his nose on your knee, you hear his sparkling voice directly in your head.
+– Who are you stranger? Can you help us ? Your luck is so strong, and wee need luck! Please, we’re in danger, help us!
+– Well I don’t know, I came to find the rune of Onir. Does that can help?
+– Maybe yes… The rune is kept in the cloud tree. But you’ll need the key of light get the rune… My sister, in the other room, she has it. Please hurry, we need to recover our luck!
+
+* Let's go to the other room
+    > 002 //TODO: card draw
+
+----
+@tr_001_l
+
+As the card glow in your hand, you fall into a psychedellic vison that gives you important informations: You need the key of light, and this key can be found with the help of Ama in the other room.
+
+* Let's go to the other room
+    > 002
+
+----
+@002
+
+* [lucky]
+    > 002_l
+* [neutral]
+    > 002_n
+* [unlucky]
+    > 002_u
+
+
+----
+@002_l
+
+When the card droped you in this new room, the fall seemed infinite. At last you found yourself levitatinf between a full moon and a sphere with a dark glow.
+Ama, Yre daughter, appears in front of you. Wierd feeling to see a blin cyclop, but her massive obsidian body and  her stormy hairs, prevent any comment from you.
+– So unlucky you are. How could you enter my realm ?
+– I just used those cards. Lady Ama, I came to get the key of light, can you help me ?
+– Boooriing! It should be my brother who sent you, isn't it? Lets bring him to me and we'll see later.
+
+* Let's go back to find Ther
+    > 003 //TODO: draw card
+----
+@002_n
+
+----
+@002_u
+
+
