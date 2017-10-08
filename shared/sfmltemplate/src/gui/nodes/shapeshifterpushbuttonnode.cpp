@@ -1,5 +1,3 @@
-#pragma once
-
 #include <sfmltemplate/gui/nodes/shapeshifterpushbuttonnode.hpp>
 
 #include <mutils/collision.hpp>

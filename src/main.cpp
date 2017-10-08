@@ -1,8 +1,10 @@
 #include "app.hpp"
 
-void main()
+int main()
 {
 	pages::App app;
 	app.init();
 	app.run();
+
+	return 0;
 }

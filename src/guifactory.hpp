@@ -1,5 +1,6 @@
 #pragma once
 
+#include "choicebutton.hpp"
 #include "pushbutton.hpp"
 
 #include <sfmltemplate/core/guifactory.hpp>
@@ -12,6 +13,7 @@ namespace pages
 		GuiFactory(sfmltemplate::ResourceManager* resourceManager);
 
 		std::unique_ptr<PushButton> makePushButton() const;
+		std::unique_ptr<ChoiceButton> makeChoiceButton() const;
 	};
 }
 

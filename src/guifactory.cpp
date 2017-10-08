@@ -21,4 +21,12 @@ namespace pages
 		button->setShapeSizeToContentSize();
 		return button;
 	}
+	std::unique_ptr<ChoiceButton> GuiFactory::makeChoiceButton() const
+	{
+		std::unique_ptr<ChoiceButton> button(new ChoiceButton);
+		button->getText()->setFont(resourceManager_.getFont(ResourceManager::Fonts::monofonto));
+		button->getText()->setFillColor(sf::Color(255, 255, 255, 255));
+		button->centerMiddleLeft();
+		return button;
+	}
 }

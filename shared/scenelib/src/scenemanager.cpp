@@ -38,6 +38,7 @@ namespace scenelib
 			&& (choiceNb < currentScene_->second.choices.size())));
 
 		goToScene(currentScene_->second.choices[choiceNb].nextScene);
+		changed = true;
 	}
 
 	bool SceneManager::exists(std::string sceneName) const

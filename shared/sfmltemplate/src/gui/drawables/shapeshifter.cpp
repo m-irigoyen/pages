@@ -35,6 +35,22 @@ namespace sfmltemplate
 		if (textShader_) { delete(textShader_); textShader_ = nullptr; }
 	}
 
+	void ShapeShifter::centerMiddleLeft()
+	{
+		if (shape_)
+		{
+			shape_->setOrigin(0, shape_->getGlobalBounds().height / 2);
+		}
+		if (sprite_)
+		{
+			sprite_->setOrigin(0, sprite_->getGlobalBounds().height / 2);
+		}
+		if (text_)
+		{
+			text_->setOrigin(0, text_->getGlobalBounds().height / 2);
+		}
+	}
+
 	void ShapeShifter::draw(sf::RenderTarget & target, sf::RenderStates states) const
 	{
 		if (hasShape_)

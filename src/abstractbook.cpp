@@ -6,6 +6,8 @@
 #include <mutils\assert.hpp>
 #include <sfmlutils/vectorutils.hpp>
 
+#include <cmath>
+
 namespace pages
 {
 	using Vec2 = mutils::Vec2;
@@ -45,11 +47,65 @@ namespace pages
 
 	// Shaders
 	const std::string fsDrawInClip =
-#include "shaders/fsdrawinclip.hpp"
+
+		"uniform vec2 a;\n"
+		"uniform vec2 b;\n"
+		"uniform vec2 d;\n"
+		"uniform int height;\n"
+		"uniform sampler2D texture;\n"
+		"uniform float darkestAlpha;\n"
+		"uniform float shadowFadeDistance;\n"
+		"uniform float shadowCoefficient;\n"
+#include "shaders/fsispointinrectangle.hpp"
+#include "shaders/fsdistancepointline.hpp"
+		"void main()\n"
+		"{\n"
+		"	vec2 p = gl_FragCoord.xy;\n"
+		"	p.y = height - p.y;\n" // SFML is top-left origin based
+		"	float alpha = isPointInRectangle(p,a,b,d);\n"
+
+		"	vec4 pixel = texture2D(texture, gl_TexCoord[0].xy);"
+		"	float dst = distancePointLine(p, a, b);\n"
+		//"	gl_FragColor = (gl_Color * pixel) * alpha ;\n"
+		"	float shadowFinal = darkestAlpha + "
+		"(clamp(dst, 0.f, shadowFadeDistance) * (1 - darkestAlpha) / shadowFadeDistance);\n"
+		"	pixel.xyz = pixel.xyz * mix(shadowFinal, 1, shadowCoefficient);\n"
+		"	gl_FragColor = gl_Color * pixel * alpha ;\n"
+		"}\n";
+
+//#include "shaders/fsdrawinclip.hpp"
 		;
 
 	const std::string fsDrawOutClip =
-#include "shaders/fsdrawoutclip.hpp"
+		"uniform vec2 a;\n"
+		"uniform vec2 b;\n"
+		"uniform vec2 d;\n"
+		"uniform int height;\n"
+		"uniform sampler2D texture;\n"
+		"uniform float darkestAlpha;\n"
+		"uniform float shadowFadeDistance;\n"
+		"uniform float shadowCoefficient;\n"
+#include "shaders/fsispointinrectangle.hpp"
+#include "shaders/fsdistancepointline.hpp"
+		"void main()\n"
+		"{\n"
+		"	vec2 p = gl_FragCoord.xy;\n"
+		"	p.y = height - p.y;\n" // SFML is top-left origin based
+		"	float alpha = isPointInRectangle(p,a,b,d);\n"
+
+		"	alpha = 1 - alpha;\n"
+
+		"	vec4 pixel = texture2D(texture, gl_TexCoord[0].xy);"
+		"	float dst = distancePointLine(p, a, b);\n"
+		//"	gl_FragColor = (gl_Color * pixel) * alpha ;\n"
+		"	float shadowFinal = darkestAlpha + "
+		"(clamp(dst, 0.f, shadowFadeDistance) * (1 - darkestAlpha) / shadowFadeDistance);\n"
+		"	pixel.xyz = pixel.xyz * mix(shadowFinal, 1, shadowCoefficient);\n"
+		"	gl_FragColor = gl_Color * pixel * alpha ;\n"
+		"}\n";
+
+
+//#include "shaders/fsdrawoutclip.hpp"
 		;
 
 	bool AbstractBook::init(ResourceManager* resourceManager)

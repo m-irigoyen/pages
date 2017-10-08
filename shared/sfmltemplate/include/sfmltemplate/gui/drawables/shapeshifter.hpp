@@ -46,6 +46,8 @@ namespace sfmltemplate
 			Shape s = Shape::COUNT);
 		virtual ~ShapeShifter();
 
+		virtual void centerMiddleLeft();
+
 		// Hérité via Drawable
 		virtual void draw(sf::RenderTarget & target, sf::RenderStates states) const override;
 
