@@ -81,14 +81,79 @@ When the card droped you in this new room, the fall seemed infinite. At last you
 Ama, Yre daughter, appears in front of you. Wierd feeling to see a blin cyclop, but her massive obsidian body and  her stormy hairs, prevent any comment from you.
 – So unlucky you are. How could you enter my realm ?
 – I just used those cards. Lady Ama, I came to get the key of light, can you help me ?
-– Boooriing! It should be my brother who sent you, isn't it? Lets bring him to me and we'll see later.
+– Boooriing! It should be my brother who sent you, isn't it? Lets bring him to me and we'll see after.
 
 * Let's go back to find Ther
     > 003 //TODO: draw card
 ----
 @002_n
+When the card droped you in this new room, the fall seemed infinite. At last you found yourself levitatinf between a full moon and a sphere with a dark glow.
+Ama, Yre daughter, appears in front of you. Wierd feeling to see a blin cyclop, but her massive obsidian body and  her stormy hairs, prevent any comment from you.
+– What brings a non-dreamy stranger like you in my room ?
+– Your brother sent me here to get the key of light.
+– Then you're here for the key... Stupid Ther ! Bring him to me, I have to teach some things to him. I'll help you after.
+
+* Let's go back to find Ther
+    > 003 //TODO: draw card
 
 ----
 @002_u
+When the card droped you in this new room, the fall seemed infinite. At last you found yourself levitatinf between a full moon and a sphere with a dark glow.
+Ama, Yre daughter, appears in front of you. Wierd feeling to see a blin cyclop, but her massive obsidian body and  her stormy hairs, prevent any comment from you.
+– A stranger ! Are you here to halp ? Can you share your luck with a falling realm ?
+– I don't know if I can help, but I'm here for the key of light.
+– For the key ? How do you know about the key ? It must be my brother. Please bring him to me, and take care to not spend your luck !
 
+* Let's go back to find Ther
+    > 003 //TODO: draw card
 
+----
+@003
+
+* [lucky]
+    > 003_l
+* [neutral]
+    > 003_n
+* [unlucky]
+    > 003_u
+
+----
+@003_l
+
+----
+@003_n
+
+----
+@003_u
+
+----
+@004
+
+----
+@005
+
+* [lucky]
+    > 005_l
+* [neutral]
+    > 005_n
+* [unlucky]
+    > 005_u
+
+----
+@006
+
+* [lucky]
+    > 006_l
+* [neutral]
+    > 006_n
+* [unlucky]
+    > 006_u
+
+----
+@007
+
+----
+@008
+
+----
+@009
