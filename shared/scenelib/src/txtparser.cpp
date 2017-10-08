@@ -10,6 +10,7 @@ namespace scenelib
 	unsigned int lineNb = 0;
 	const std::string scene("----");
 	const char sceneName('@');
+	const char sceneFlag('#');
 	const char choice('*');
 	const char goTo('>');
 
@@ -69,6 +70,8 @@ namespace scenelib
 	bool loadScene(std::ifstream& stream, Scene& s)
 	{
 		std::string line;
+
+		// Reading name
 		readOneLine(stream, line);
 		if ((line.size() < 2) || (line[0] != sceneName))
 		{
@@ -77,9 +80,21 @@ namespace scenelib
 		}
 		s.name = std::string(line.begin() + 1, line.end());
 
+		// Reading flag
+		readOneLine(stream, line);
+		if ((line.size() > 0) && (line[0] != sceneFlag))
+		{
+			s.isRedirection = std::string(line.begin() + 1, line.end()).compare("redirection") == 0;
+		}
+		else if (line.size() > 0)
+		{
+			logError("Expected scene flag, got : " + line);
+			return false;
+		}
+
 		consumeEmptyLines(stream, line);
 
-		bool isChoice = false;
+		bool isChoice = ((line.size() > 0) && (line[0] == choice));
 		while (!isChoice)
 		{
 			if (line.empty())

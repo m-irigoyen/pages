@@ -74,7 +74,7 @@ namespace pages
 			sf::RenderStates s2 = states;
 			s2.shader = shader;
 			target.draw(s, s2);
-			target.draw(shadowSprite_, s2);
+			target.draw(shadow, s2);
 		}
 		else
 		{

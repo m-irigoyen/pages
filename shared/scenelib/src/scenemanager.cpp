@@ -64,6 +64,13 @@ namespace scenelib
 		{
 			MUTILS_ASSERT(exists(sceneName));
 			currentScene_ = scenes_.find(sceneName);
+
+			while ((currentScene_ != scenes_.end())
+				&& (currentScene_->second.isRedirection))
+			{
+
+			}
+
 		}
 	}
 

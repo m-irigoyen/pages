@@ -27,7 +27,7 @@ namespace pages
 		virtual void tick(float dt) override;
 
 		void doChoice(int c);
-		void beginResetScene();
+		void beginResetScene(bool init = false);
 		void endResetScene();
 
 	protected:
@@ -39,7 +39,10 @@ namespace pages
 		scenelib::SceneManager scenes_;
 		std::vector<ChoiceButton*> choiceButtons_;
 
+		bool finishedTurningPage_;
 		bool turningPage_;
+		float turnTime_;
+		mutils::Vec2 midPoint_;
 		/*virtual void draw(
 		sf::RenderTarget & target
 		, sf::RenderStates states) const override;*/

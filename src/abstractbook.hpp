@@ -122,6 +122,21 @@ namespace pages
 		// Hérité via Drawable
 		virtual void draw(sf::RenderTarget & target, sf::RenderStates states) const override;
 
+		bool tryTurn(HOOK h);
+
+		bool getAllTurningData(
+			HOOK h
+			, mutils::Vec2& hook
+			, mutils::Vec2& drop
+			, mutils::Vec2& far
+			, mutils::Vec2& close
+		) const;
+
+		void forcePage(unsigned int pageNb);
+
+		virtual void prepareDraw(float dt);
+
+
 	protected:
 		// Functions
 		void turningPagesComputation(
@@ -149,14 +164,6 @@ namespace pages
 		virtual HOOK getCurrentHook() const;
 		virtual mutils::Vec2 getDropPoint(HOOK h) const;
 		virtual mutils::Vec2 getHookPoint(HOOK h) const;
-
-		bool getAllTurningData(
-			HOOK h
-			, mutils::Vec2& hook
-			, mutils::Vec2& drop
-			, mutils::Vec2& far
-			, mutils::Vec2& close
-		) const;
 
 		virtual void cornerHookComputation(
 			mutils::Vec2 handle
@@ -251,7 +258,6 @@ namespace pages
 		sf::Shader shaderInClip_;
 		sf::Shader shaderOutClip_;
 
-		virtual void prepareDraw(float dt);
 
 
 		//! Draws a single page

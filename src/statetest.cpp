@@ -26,6 +26,8 @@ namespace pages
 		, ResourceManager * resourceManager
 		, StateManager * stateManager)
 		: AbstractState(graphics, guiFactory, inputManager, resourceManager, stateManager, 0)
+		, finishedTurningPage_(false)
+		, turningPage_(false)
 	{
 
 	}
@@ -74,11 +76,6 @@ namespace pages
 		, std::vector<sf::Sprite>& pages
 		, std::vector<sf::Texture>& textures)
 	{
-		textures.push_back(sf::Texture());
-		textures.push_back(sf::Texture());
-		pages.push_back(sf::Sprite());
-		pages.push_back(sf::Sprite());
-
 		mutils::Vec2 pageSize = book.getPageSize();
 		mutils::Vec2 pageMargin = mutils::Vec2(10, 10);
 
@@ -163,16 +160,21 @@ namespace pages
 		scenes_.loadTestProject();
 
 		// Make first pages
-		beginResetScene();
+		beginResetScene(true);
 		endResetScene();
 
 		return true;
 	}
 
+	mutils::Vec2 lerp(mutils::Vec2 a, mutils::Vec2 b, float t)
+	{
+		mutils::Vec2 dir = b - a;
+		return a + (dir * t);
+	}
+
 	void StateTest::tick(float dt)
 	{
 		AbstractState::tick(dt);
-
 
 		if (scenes_.end)
 		{
@@ -188,7 +190,55 @@ namespace pages
 				auto ptr = hudGraph_.sceneRoot.detachChild(*c);
 			}
 			choiceButtons_.clear();
-			endResetScene();
+
+			turnTime_ += dt/1.5f;
+			if (turnTime_ > 1.f)
+			{
+				turnTime_ = 1.f;
+			}
+
+			mutils::Vec2 hook;
+			mutils::Vec2 drop;
+			mutils::Vec2 far;
+			mutils::Vec2 close;
+			bookNode_->getBook()->getAllTurningData(AbstractBook::HOOK::BOTTOM_RIGHT
+				, hook, drop, far, close);
+
+			mutils::Vec2 pos;
+			if (turnTime_ < 0.5f)
+			{
+				pos = lerp(hook, midPoint_, turnTime_ * 2.f);
+				bookNode_->getBook()->inputPosition(pos);
+			}
+			else
+			{
+				pos = lerp(midPoint_, drop, (turnTime_ - 0.5f) * 2.f);
+				bookNode_->getBook()->inputPosition(pos);
+			}
+
+
+			if (turnTime_ >= 1.f)
+			{
+				bookNode_->getBook()->inputRelease(pos);
+				turningPage_ = false;
+				finishedTurningPage_ = true;
+				turnTime_ = 0.f;
+				bookNode_->getBook()->inputPosition(mutils::Vec2(600,300));
+			}
+		}
+
+		bookNode_->getBook()->tick(dt);
+
+
+		if (finishedTurningPage_)
+		{
+			turnTime_ += dt;
+			if (turnTime_ > 0.2f)
+			{
+				finishedTurningPage_ = false;
+				endResetScene();
+				bookNode_->getBook()->forcePage(0);
+			}
 		}
 	}
 
@@ -198,7 +248,7 @@ namespace pages
 		beginResetScene();
 	}
 
-	void StateTest::beginResetScene()
+	void StateTest::beginResetScene(bool init)
 	{
 		makeNextPages(scenes_.getCurrentScene(),
 			*bookNode_->getBook(),
@@ -208,6 +258,25 @@ namespace pages
 			bookNode_->getBook()->getTextures());
 
 		turningPage_ = true;
+		turnTime_ = 0.f;
+
+		if (init)
+		{
+			turningPage_ = false;
+			finishedTurningPage_ = true;
+		}
+		else if (!bookNode_->getBook()->tryTurn(AbstractBook::HOOK::BOTTOM_RIGHT))
+		{
+			MUTILS_ASSERT(false);
+		}
+		else
+		{
+			mutils::Vec2 hook, drop, close, far;
+			bookNode_->getBook()->getAllTurningData(AbstractBook::HOOK::BOTTOM_RIGHT
+				, hook, drop, close, far);
+			midPoint_ = far + mutils::Vec2(0.f, 1.f) * ((rand() % 11) * 4 - 20);
+		}
+
 	}
 
 	void StateTest::endResetScene()
@@ -217,7 +286,7 @@ namespace pages
 		createButtons(hudGraph_
 			, *((GuiFactory*)&guiFactory_)
 			, scenes_.getCurrentScene());
-		turningPage_ = false;
+		finishedTurningPage_ = false;
 	}
 }
 

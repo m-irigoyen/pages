@@ -18,5 +18,6 @@ namespace scenelib
 		std::string name; //!< Name of the scene
 		std::string text; //!< Text that is displayed to players
 		std::vector<Choice> choices; //!< Choices offered to the player
+		bool isRedirection;
 	};
 }

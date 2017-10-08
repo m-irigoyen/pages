@@ -17,7 +17,7 @@ namespace pages
 		, mutils::Vec2 margin
 		, float cornerPressRadius
 		, Vec2 edgePressRect)
-		: handleSpeed_(0.01f)
+		: handleSpeed_(1.f)
 		, lagThreshold_(1.f)
 		, state_(STATE::REST)
 		, cornerPressRadius_(cornerPressRadius)
@@ -546,6 +546,11 @@ namespace pages
 		return false;
 	}
 
+	void AbstractBook::forcePage(unsigned int pageNb)
+	{
+		currentPage_ = pageNb;
+	}
+
 	void AbstractBook::cornerHookComputation(
 		Vec2 handle
 		, Vec2 hook
@@ -944,6 +949,20 @@ namespace pages
 				, cLeft
 				, cShader);
 		}
+	}
+
+	bool AbstractBook::tryTurn(HOOK h)
+	{
+		if (!canEnterTurn(state_))
+		{
+			return false;
+		}
+
+		MUTILS_ASSERT(h != HOOK::COUNT);
+		{
+			enterTurningState(h);
+		}
+		return true;
 	}
 
 }

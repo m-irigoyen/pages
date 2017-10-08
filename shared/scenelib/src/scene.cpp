@@ -10,6 +10,7 @@ namespace scenelib
 	Scene::Scene(std::string n, std::string t)
 		: name(n)
 		, text(t)
+		, isRedirection(false)
 	{
 	}
 }
