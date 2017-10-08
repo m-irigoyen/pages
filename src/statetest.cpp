@@ -6,9 +6,11 @@
 #include "resourcemanager.hpp"
 #include "statemanager.hpp"
 
+#include <scenelib/scene.hpp>
 #include <sfmltemplate/core/graphics.hpp>
 #include <sfmltemplate/core/inputmanager.hpp>
 #include <sfmltemplate/gui/nodes/shapeshiftertogglebuttonnode.hpp>
+#include <sfmltemplate/gui/scenenode.hpp>
 
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/Texture.hpp>
@@ -128,6 +130,29 @@ namespace pages
 		pages[1].setTexture(textures[1]);
 	}
 
+	void StateTest::createButtons(sfmltemplate::SceneGraph& graph
+		, GuiFactory& factory
+		, const scenelib::Scene& s)
+	{
+		mutils::Vec2 winSize(1280, 720);
+		for (int i = 0; i < s.choices.size(); ++i)
+		{
+			const scenelib::Choice& c = s.choices[i];
+			auto button = factory.makeChoiceButton();
+			button->setPosition(20, 720 - 50 - i * 30);
+			button->setString(c.text);
+			button->centerMiddleLeft();
+			button->setAction([this, i]() {
+				this->doChoice(i);
+			});
+			auto buttonPtr = graph.sceneRoot.attachChild(std::move(button));
+			hudGraph_.registerInteractableNode(
+				(sfmltemplate::AbstractInteractableNode*)buttonPtr);
+			choiceButtons_.push_back((ChoiceButton*)buttonPtr);
+		}
+	}
+
+
 	bool StateTest::init()
 	{
 		// Book stuff
@@ -138,18 +163,11 @@ namespace pages
 		scenes_.loadTestProject();
 
 		// Make first pages
-		makeNextPages(scenes_.getCurrentScene(),
-			*bookNode_->getBook(),
-			resourceManager_.getTexture(ResourceManager::Textures::paper),
-			resourceManager_.getFont(ResourceManager::Fonts::monofonto),
-			bookNode_->getBook()->getPages(),
-			bookNode_->getBook()->getTextures());
-		resetPages(bookNode_->getBook()->getPages(), bookNode_->getBook()->getTextures());
+		beginResetScene();
+		endResetScene();
 
 		return true;
 	}
-
-
 
 	void StateTest::tick(float dt)
 	{
@@ -161,9 +179,45 @@ namespace pages
 			stateManager_.requestQuit = true;
 			return;
 		}
+		if (turningPage_)
+		{
+			// Remove old buttons
+			for (ChoiceButton* c : choiceButtons_)
+			{
+				hudGraph_.unregisterInteractableNode(c);
+				auto ptr = hudGraph_.sceneRoot.detachChild(*c);
+			}
+			choiceButtons_.clear();
+			endResetScene();
+		}
+	}
 
+	void StateTest::doChoice(int c)
+	{
+		scenes_.doChoice(c);
+		beginResetScene();
+	}
 
-		// TODO that
+	void StateTest::beginResetScene()
+	{
+		makeNextPages(scenes_.getCurrentScene(),
+			*bookNode_->getBook(),
+			resourceManager_.getTexture(ResourceManager::Textures::paper),
+			resourceManager_.getFont(ResourceManager::Fonts::monofonto),
+			bookNode_->getBook()->getPages(),
+			bookNode_->getBook()->getTextures());
+
+		turningPage_ = true;
+	}
+
+	void StateTest::endResetScene()
+	{
+		resetPages(bookNode_->getBook()->getPages(),
+			bookNode_->getBook()->getTextures());
+		createButtons(hudGraph_
+			, *((GuiFactory*)&guiFactory_)
+			, scenes_.getCurrentScene());
+		turningPage_ = false;
 	}
 }
 

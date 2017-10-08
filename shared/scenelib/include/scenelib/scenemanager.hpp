@@ -31,6 +31,7 @@ namespace scenelib
 		bool loadTestProject();
 
 		bool end;
+		bool changed;
 
 	protected:
 		SceneMap scenes_;
