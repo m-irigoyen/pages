@@ -61,7 +61,7 @@ As Yre told you, his son Ther comes to you. Blind, like his father, he stays a p
 As the card glow in your hand, you fall into a psychedellic vison that gives you important informations: You need the key of light, and this key can be found with the help of Ama in the other room.
 
 * Let's go to the other room
-    > 002
+    > 002 //TODO: card draw
 
 ----
 @002
@@ -120,24 +120,57 @@ Ama, Yre daughter, appears in front of you. Wierd feeling to see a blin cyclop, 
 ----
 @003_l
 
+Back to the cloudy land of Ther, you look for the rainbow kitten, in vain. Walking though the cotton mater of this room, you find a little golden pony who try to fly away from you.
+– Wait little pony ! Can you tell me where I can find Ther ?
+– First, I'm not a little pony ! I'm a pony-person ! And if you want to find Ther he is in one of those three sun-houses, here are his instructions. Now leave me alone, creature of bad luck !
+
+* Let's read the instructions
+    > 004 //TODO: card draw
+* Why not using some luck ?
+    > 006 //TODO: 2 card draw
+
 ----
 @003_n
+
+Back to the cloudy land of Ther, you look for the rainbow kitten, in vain. Walking though the cotton mater of this room, you find a little golden pony wandering around a candy light.
+– Hello... pony sir ? I'm looking for Ther, ruler of this room. Do you know where he is ?
+– Hello non-dreamy sir. Ther is not around, he retired in one of those three sun-houses. He left some instructions in case we need him.
+
+* Let's read the instructions
+    > 004 //TODO: card draw
+* Why not using some luck ?
+    > 006 //TODO: 2 card draw
 
 ----
 @003_u
 
+Back to the cloudy land of Ther, you look for the rainbow kitten, in vain. Walking though the cotton mater of this room, you find a little golden pony hidding behind a rainbow.
+– Hey scared pony, I have to find Ther can you help me ?
+– Are you the saviour ? You probably is, Ther told us that a stranger would come to save the room. Our ruler is in one of those three sun-houses, he left some instruction. I don't understand them But I guess he is is in the middle house.
+
+* Let's read the instructions
+    > 004 //TODO: card draw
+* Why not using some luck ?
+    > 006 //TODO: 2 card draw
+
 ----
 @004
+
+Enigma
+
+* lose
+    > 005
+* lose
+    > 005
+* win
+    > 006 //TODO: card draw
 
 ----
 @005
 
-* [lucky]
-    > 005_l
-* [neutral]
-    > 005_n
-* [unlucky]
-    > 005_u
+As you enter the house, you wake up in your bed.
+
+Controling your dreams ? Not today.
 
 ----
 @006
@@ -150,10 +183,62 @@ Ama, Yre daughter, appears in front of you. Wierd feeling to see a blin cyclop, 
     > 006_u
 
 ----
+@006_l
+
+When you enter the house, you arrives directly in Ama's room, Ther by your side. Now you see them in the same place, Ama seems much older than her brother.
+– Dumb little brother. You revealed our secrets to this unlucky, undreamy stranger thing! This is unacceptable!
+– But sister...
+– Be quiet Ther! Now you've send this abominable person here, let's help it to find the key. You, go to the cloud tree and try to find the key with those instructions!
+
+* Go to the cloud tree.
+    > 007 //TODO: card draw
+* It's time to luck!
+    > 009 //TODO: 2 card draw
+
+----
+@006_n
+
+When you enter the house, you arrives directly in Ama's room, Ther by your side. Now you see them in the same place, Ama seems much older than her brother.
+– Ther, do you remember why we're here ? We need to rule dreams and avoid non-dreams to controle us.
+– Yes... Sorry sister.
+– Doesn't matter. As you arrived here non-dreamy person, I'll give you a chance to get what you want. On this paper there is instructions, go find the cloud tree and try to get the rune.
+
+* Go to the cloud tree.
+    > 007 //TODO: card draw
+* It's time to luck!
+    > 009 //TODO: 2 card draw
+
+----
+@006_u
+
+When you enter the house, you arrives directly in Ama's room, Ther by your side. Now you see them in the same place, Ama seems much older than her brother.
+– Brother! Thank you to send me the savior. I had to see that you're still ok, to be sure this non-dreamy person wasn't lying. So you really mean no harm for us, take those instructions and go to the cloud tree and save us from bad luck, please.
+
+* Go to the cloud tree.
+    > 007 //TODO: card draw
+* It's time to luck!
+    > 009 //TODO: 2 card draw
+
+----
 @007
+
+Enigma
+
+* lose
+    > 008
+* lose
+    > 008
+* win
+    > 009 //TODO: card draw
 
 ----
 @008
 
+As you touch the dreamy character, you wake up in your bed.
+
+What a wierd dream.
+
 ----
 @009
+
+When you touch the dreamy character his eyes light up, the cloud tree starts to spin, and the sound of thunder resound all around. As the colors over-saturates, the rune appears to you. Glowing and powerful, it comes to your chest and melt with your body. At this moment you finally know: dreams will obey. World around you change as your mind run and, at the end, the whole castle colapse. It's the start of your mindful dreaming night.
