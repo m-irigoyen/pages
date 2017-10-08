@@ -16,9 +16,8 @@ namespace scenelib
 
 	void logError(const std::string& error)
 	{
-		throw new std::exception(std::string(
-			"Line " + std::to_string(lineNb) + " : " + error
-		).data());
+		std::string s("Line " + std::to_string(lineNb) + " : " + error);
+		throw new std::runtime_error(s);
 	}
 
 	void logUnexpected(const std::string& expectedSymbol, const std::string& line)
