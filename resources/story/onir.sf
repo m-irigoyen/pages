@@ -126,8 +126,6 @@ Back to the cloudy land of Ther, you look for the rainbow kitten, in vain. Walki
 
 * Let's read the instructions
     > 004 //TODO: card draw
-* Why not using some luck ?
-    > 006 //TODO: 2 card draw
 
 ----
 @003_n
@@ -138,8 +136,6 @@ Back to the cloudy land of Ther, you look for the rainbow kitten, in vain. Walki
 
 * Let's read the instructions
     > 004 //TODO: card draw
-* Why not using some luck ?
-    > 006 //TODO: 2 card draw
 
 ----
 @003_u
@@ -150,20 +146,22 @@ Back to the cloudy land of Ther, you look for the rainbow kitten, in vain. Walki
 
 * Let's read the instructions
     > 004 //TODO: card draw
-* Why not using some luck ?
-    > 006 //TODO: 2 card draw
 
 ----
 @004
 
-Enigma
+You see the three sun-houses. On the left there is a reallys high one, discusing with the clouds. On the left kinda spherical type of sun, so shinny. In the middle, a small cylinder to live in.
+You read the instructions paper :
+"To find you have to guess, what sun I posess. Tall is not its caracteristic, but it's smooth like a nice silk."
 
-* lose
+* Enter the right house
     > 005
-* lose
+* Open the middle house's door
     > 005
-* win
+* Go for the left sun
     > 006 //TODO: card draw
+* Why not using some luck ?
+    > 006 //TODO: 2 card draw
 
 ----
 @005
@@ -192,8 +190,6 @@ When you enter the house, you arrives directly in Ama's room, Ther by your side.
 
 * Go to the cloud tree.
     > 007 //TODO: card draw
-* It's time to luck!
-    > 009 //TODO: 2 card draw
 
 ----
 @006_n
@@ -205,8 +201,6 @@ When you enter the house, you arrives directly in Ama's room, Ther by your side.
 
 * Go to the cloud tree.
     > 007 //TODO: card draw
-* It's time to luck!
-    > 009 //TODO: 2 card draw
 
 ----
 @006_u
@@ -216,20 +210,22 @@ When you enter the house, you arrives directly in Ama's room, Ther by your side.
 
 * Go to the cloud tree.
     > 007 //TODO: card draw
-* It's time to luck!
-    > 009 //TODO: 2 card draw
 
 ----
 @007
 
-Enigma
+Arriving to the place you find yourself in front of a great and colorful tree made of cloud shapes that moves with the wind. In front of it, three small dreamy creature. On is a snake, rolled on his rings of flesh, with funny cartoony eyes. Another is a wooden man, dressed like a princess, with seven legs. The last one is a chainmail, floating in the air, the chest folded and moving like a human face.
+You open the paper and read instructions:
+"I'm one of the tree guardian and I'm the key of light, touch me and you'll see. I'm living and it's not common but my rings age me my time gone"
 
-* lose
+* Touch the snake
     > 008
-* lose
-    > 008
-* win
+* Touch the wooden man
     > 009 //TODO: card draw
+* Touch the chainmail
+    > 008
+* It's time to luck!
+    > 009 //TODO: 2 card draw
 
 ----
 @008
